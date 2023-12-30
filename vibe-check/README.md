@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Vibe Check 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to "Vibe Check", a cooperative music-themed game that immerses players in a neon-drenched, retro-modern world. Collaborate with a partner, select your vibe, and type to the beat as you experience an interactive musical journey like no other.
 
-## Available Scripts
+## Game Loop Overview
 
-In the project directory, you can run:
+### 1. Start Screen
+- **Experience**: Retro yet modern vibe with a neon-drenched start screen.
+- **Action**: Players decide to begin their musical journey or exit to the main menu.
 
-### `npm start`
+### 2. Intensity Selection
+- **Mechanism**: Players influence the game's energy by choosing an intensity level for the music.
+- **Impact**: The average of player choices determines song tempo, "vibe words" complexity, and overall difficulty.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. Countdown
+- **Excitement**: A high-energy neon countdown prepares players for the game, syncing with the upcoming music beat.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 4. Gameplay Interface
+- **Arena**: Players enter the collaborative gameplay arena as the selected song plays.
+- **Interaction**: Type in words associated with the song's vibe to score points, with real-time feedback and animations.
 
-### `npm test`
+### 5. Score Screen
+- **Showcase**: Post-round vibrant score screen displays points in an engaging manner.
+- **Visuals**: Animated thematic visuals maintain the high energy and game's visual continuity.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 6. Intensity Selection Revisited
+- **Evolution**: Players return to the intensity selection to refine their preferences based on the previous round's experience.
+- **Control**: This loop allows continuous shaping of the game's challenge level and influences the next song selection.
 
-### `npm run build`
+## Current Progress
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **UI/UX**: Implemented a minimalist and engaging interface that resonates with the game's theme.
+- **Intensity Slider**: Developed a slider mechanism for players to set their desired game intensity.
+- **Gameplay Mechanics**: Established the core gameplay loop, allowing players to input and match "vibe words" with real-time feedback.
+- **Music Integration**: Integrated a dynamic music selection and playback system that reacts to player settings.
+- **Scoring System**: Created a scoring system that captures and displays player performance post-round.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get started with "Vibe Check":
 
-### `npm run eject`
+1. Clone the repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/JawaraGordon/vibe-check
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate to the project directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd vibe-check
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Install dependencies:
 
-## Learn More
+```bash
+npm install
+```
+4. Start the game:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### The game will launch in your default web browser.
 
-### Code Splitting
+- **Contributing**
+We welcome contributions and suggestions! Please open an issue or submit a pull request for any enhancements you wish to propose.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
+"Vibe Check" is open-source software licensed under the MIT license.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
