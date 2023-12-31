@@ -591,8 +591,48 @@ video {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .justify-evenly {
   justify-content: space-evenly;
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-16 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(4rem * var(--tw-space-x-reverse));
+  margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-28 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(7rem * var(--tw-space-x-reverse));
+  margin-left: calc(7rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-36 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(9rem * var(--tw-space-x-reverse));
+  margin-left: calc(9rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-40 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(10rem * var(--tw-space-x-reverse));
+  margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-48 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(12rem * var(--tw-space-x-reverse));
+  margin-left: calc(12rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .rounded {
@@ -659,6 +699,31 @@ video {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
 }
 
 .pt-2 {
