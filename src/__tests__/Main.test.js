@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Main from '../components/Main';
 
 test('renders Main component with "Vibe Check"', () => {
@@ -8,9 +8,20 @@ test('renders Main component with "Vibe Check"', () => {
 });
 
 test('should have a button that can be clicked', () => {
-  const { getByRole } = render(<Main />);
-  const button = getByRole('button');
+    const { getAllByRole } = render(<Main />);
+    const buttons = getAllByRole('button');
+    
+   
+    fireEvent.click(buttons[0]);
+    
+    
+    fireEvent.click(buttons[1]);
+  });
 
-  fireEvent.click(button);
 
-});
+
+test('renders Scoreboard component in Main', () => {
+    render(<Main />);
+    const scoreboardElement = screen.getByText(/Scoreboard/i);
+    expect(scoreboardElement).toBeInTheDocument();
+  });
