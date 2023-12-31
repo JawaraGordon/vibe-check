@@ -1,8 +1,18 @@
+import Button from '../components/common/Button';
+
 const Main = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center h-screen text-4xl font-bold leading-none">
-      <h1 className="text-white">Vibe Check</h1>
-    </div>
+    <>
+      <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
+        <h1 className="text-white text-4xl font-bold leading-none mb-8">
+          Vibe Check
+        </h1>
+        <div className="flex flex-row justify-evenly items-center w-full max-w-xs">
+          <Button label="Start" onClick={() => {}} />
+          <Button label="Exit" onClick={() => {}} />
+        </div>
+      </div>
+    </>
   );
 };
 
