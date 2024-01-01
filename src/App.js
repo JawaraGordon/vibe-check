@@ -3,6 +3,7 @@ import './index.css';
 import Main from './components/Main';
 import GameSetup from './components/GameSetup';
 import GamePlay from './components/GamePlay';
+import GameResults from './components/GameResults';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Main />
       <GameSetup />
       <GamePlay />
+      <GameResults />
     </>
   );
 }
