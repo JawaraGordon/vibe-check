@@ -16,6 +16,11 @@ const GameSetup = () => {
       </div>
     </div>
   </div>
+    <div className="bg-white p-8 mt-28">
+        <h2>Game Intensity</h2>
+        <input type="range" min="1" max="100" value={'gameIntensity'} readOnly />
+        {/* TODO: create conditional logic and state for Game Intensity slider that will replace value={'gameIntensity'} string with a summed variable */}
+      </div>
 </div>
   );
 };

@@ -1,8 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import GameSetup from '../components/GameSetup';
 
-test('renders GameSetup component with "Game Setup", "Player 1" and "Player 2"', () => {
+beforeEach(() => {
   render(<GameSetup />);
+});
+
+test('renders GameSetup component with "Game Setup", "Player 1" and "Player 2"', () => {
   const h1Element = screen.getByText(/Game Setup/i);
   expect(h1Element).toBeInTheDocument();
 
@@ -14,7 +17,6 @@ test('renders GameSetup component with "Game Setup", "Player 1" and "Player 2"',
 });
 
 test('renders input sliders in the inner divs', () => {
-  render(<GameSetup />);
   const player1Div = screen.getByText(/Player 1 Intensity/i).closest('div');
   const player2Div = screen.getByText(/Player 2 Intensity/i).closest('div');
   
@@ -26,4 +28,10 @@ test('renders input sliders in the inner divs', () => {
 
     expect(inputSlider.value).toBe('50');
   });
+});
+
+
+test('checks if Game Intensity div exists', () => {
+  const gameIntensityDiv = screen.getByText(/Game Intensity/i).closest('div');
+  expect(gameIntensityDiv).toBeInTheDocument();
 });
