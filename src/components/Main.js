@@ -1,11 +1,11 @@
 import Button from '../components/common/Button';
-import Scoreboard from '../components/common/Scoreboard';
+import Header from '../components/common/Header';
 
 const Main = () => {
   return (
     <>
+      <Header />
       <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
-    <Scoreboard/>
         <h1 className="text-white text-4xl font-bold leading-none mb-8">
           Vibe Check
         </h1>
