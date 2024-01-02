@@ -1,3 +1,6 @@
+import AudioWaveform from './features/AudioWaveform.js';
+import TestSong from '../assets/audio/Dimensions.mp3';
+
 const GamePlay = () => {
   return (
     <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
@@ -7,8 +10,7 @@ const GamePlay = () => {
       <div className="flex flex-col justify-center items-center w-full px-28">
         <div className="bg-white p-8 mb-8">
           <h2>Song Waveform</h2>
-          {/* TODO: create HTML5 audio element and visual display */}
-          <audio src="http://"></audio>
+          <AudioWaveform src={TestSong} />
         </div>
         <div className="flex justify-between space-x-48">
           <div className="bg-purple-600 p-8">
