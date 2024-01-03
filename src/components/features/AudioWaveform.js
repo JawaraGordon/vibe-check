@@ -35,7 +35,7 @@ const AudioWaveform = ({ src }) => {
 
     // Set up the canvas for the waveform
     canvasContext.lineWidth = 2;
-    canvasContext.strokeStyle = 'rgb(0, 0, 0)';
+    canvasContext.strokeStyle = 'rgb(147, 51, 233)';
     canvasContext.beginPath();
 
     const sliceWidth = (canvas.width * 1.0) / bufferLength;
@@ -120,7 +120,7 @@ const AudioWaveform = ({ src }) => {
 
   return (
     <>
-      <button onClick={startAudio}>Play</button>
+      <button onClick={startAudio}></button>
       <audio ref={audioRef} controls src={src} />
       <canvas ref={canvasRef} />
     </>
