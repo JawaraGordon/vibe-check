@@ -61,15 +61,17 @@ const GamePlay = () => {
       <AudioWaveform src={TestSong} />
     </div>
     <div className="flex justify-between space-x-48">
-      <div className="bg-purple-600 p-8">
-        <label htmlFor="playerOneInput" className="block text-lg font-medium text-gray-700">Player 1 Input</label>
-        <input id="playerOneInput" type="text" value={playerOneInput} onChange={(e) => setPlayerOneInput(e.target.value)} className="mt-1 block w-full" />
-      </div>
-      <div className="bg-blue-600 p-8">
-        <label htmlFor="playerTwoInput" className="block text-lg font-medium text-gray-700">Player 2 Input</label>
-        <input id="playerTwoInput" type="text" value={playerTwoInput} onChange={(e) => setPlayerTwoInput(e.target.value)} className="mt-1 block w-full" />
-      </div>
-    </div>
+  <div className="bg-purple-600 p-8">
+    <p className="mt-2 text-white">{playerOneInputs[playerOneInputs.length - 1]}</p>
+    <label htmlFor="playerOneInput" className="block text-lg font-medium text-gray-700">Player One</label>
+    <input id="playerOneInput" type="text" value={playerOneInput} onChange={(e) => setPlayerOneInput(e.target.value)} className="mt-1 block w-full" />
+  </div>
+  <div className="bg-blue-600 p-8">
+    <p className="mt-2 text-white">{playerTwoInputs[playerTwoInputs.length - 1]}</p>
+    <label htmlFor="playerTwoInput" className="block text-lg font-medium text-gray-700">Player Two</label>
+    <input id="playerTwoInput" type="text" value={playerTwoInput} onChange={(e) => setPlayerTwoInput(e.target.value)} className="mt-1 block w-full" />
+  </div>
+</div>
   </div>
 </div>
 
