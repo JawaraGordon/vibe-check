@@ -11,8 +11,8 @@ function App() {
     <>
       <Main />
       <GameSetup />
-      <GamePlay />
       <GameLoad />
+      <GamePlay />
       <GameResults />
     </>
   );
