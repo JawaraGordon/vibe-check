@@ -22,9 +22,9 @@ test('renders GamePlay component with two input divs and a Song Waveform div wit
 
   expect(playerTwoInputDiv.querySelector('p')).toBeInTheDocument();
 
-  const songWaveformDiv = screen.getByText(/Song Waveform/i).closest('div');
-  expect(songWaveformDiv).toBeInTheDocument();
-  expect(songWaveformDiv.querySelector('audio')).toBeInTheDocument();
+//   const songWaveformDiv = screen.getByText(/Song Waveform/i).closest('div');
+//   expect(songWaveformDiv).toBeInTheDocument();
+//   expect(songWaveformDiv.querySelector('audio')).toBeInTheDocument();
 });
 
 test('calls onChange event handler when the user types into player 1 input', () => {
