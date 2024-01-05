@@ -21,17 +21,16 @@ function useDebounce(value, delay) {
 }
 
 const sanitizeInputs = (input) => {
-    
-    // Added typechecking to prevent undefined type errors
-    if (typeof input !== 'string') {
-        return input;
-      }
-      const trimmedInput = input.trim();
-      const onlyStrings = trimmedInput.replace(/[^a-zA-Z ]/g, '');
-      const sanitizedHTML = DOMPurify.sanitize(onlyStrings);
-      const sanitizedSQL = sqlstring.escape(sanitizedHTML);
-      return sanitizedSQL.slice(1, -1);
-    };
+  // Added typechecking to prevent undefined type errors
+  if (typeof input !== 'string') {
+    return input;
+  }
+  const trimmedInput = input.trim();
+  const onlyStrings = trimmedInput.replace(/[^a-zA-Z ]/g, '');
+  const sanitizedHTML = DOMPurify.sanitize(onlyStrings);
+  const sanitizedSQL = sqlstring.escape(sanitizedHTML);
+  return sanitizedSQL.slice(1, -1);
+};
 
 const songVibeArray = [
   'chill',
@@ -361,7 +360,7 @@ const GamePlay = () => {
               type="text"
               value={playerTwoInput}
               onChange={(e) =>
-                sanitizeInputs(setPlayerTwoInput(e.target.value))
+                setPlayerTwoInput(sanitizeInputs(e.target.value))
               }
               maxLength={20}
               className="mt-1 block w-full"
