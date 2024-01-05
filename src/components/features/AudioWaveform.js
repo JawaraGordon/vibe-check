@@ -121,7 +121,9 @@ const AudioWaveform = ({ src }) => {
   return (
     <>
       <button onClick={startAudio}></button>
+      <div className="pb-8">
       <audio ref={audioRef} controls src={src} />
+      </div>
       <canvas ref={canvasRef} />
     </>
   );
