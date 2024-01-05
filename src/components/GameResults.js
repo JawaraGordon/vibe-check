@@ -1,6 +1,6 @@
 import Header from '../components/common/Header';
 
-const GameResults = () => {
+const GameResults = ({gameScore}) => {
   return (
     <>
       <Header />
@@ -23,7 +23,7 @@ const GameResults = () => {
             </div>
           </div>
           <div className="bg-white p-8 mt-8">
-            <h2>Game Score</h2>
+            <h2>{gameScore}</h2>
           </div>
         </div>
       </div>

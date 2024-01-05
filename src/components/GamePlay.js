@@ -235,7 +235,8 @@ const songVibeArray = [
   'majestic'
 ];
 
-const GamePlay = () => {
+// Added default func to prevent testing type  errors
+const GamePlay = ( { onGameScoreChange = () => {} }) => {
   const [playerOneInput, setPlayerOneInput] = useState('');
   const [playerTwoInput, setPlayerTwoInput] = useState('');
   const [playerOneInputs, setPlayerOneInputs] = useState([]);
@@ -244,8 +245,12 @@ const GamePlay = () => {
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
   const [lastScoredWordPlayerOne, setLastScoredWordPlayerOne] = useState('');
   const [lastScoredWordPlayerTwo, setLastScoredWordPlayerTwo] = useState('');
-  
+
   let gameScore = playerOneScore + playerTwoScore;
+  useEffect(() => {
+    let gameScore = playerOneScore + playerTwoScore;
+    onGameScoreChange(gameScore);
+  }, [playerOneScore, playerTwoScore]);
 
   const debouncedPlayerOneInput = useDebounce(playerOneInput, 1000);
   const debouncedPlayerTwoInput = useDebounce(playerTwoInput, 1000);
@@ -321,10 +326,8 @@ const GamePlay = () => {
           <div className="flex flex-col justify-center items-center">
             <div className="text-3xl font-bold ">{gameScore}</div>
           </div>
- 
 
           <AudioWaveform src={TestSong} />
- 
         </div>
         <div className="flex justify-between space-x-48">
           <div className="bg-purple-600 p-8 rounded-lg">
