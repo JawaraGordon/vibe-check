@@ -244,6 +244,7 @@ const GamePlay = () => {
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
   const [lastScoredWordPlayerOne, setLastScoredWordPlayerOne] = useState('');
   const [lastScoredWordPlayerTwo, setLastScoredWordPlayerTwo] = useState('');
+  
   let gameScore = playerOneScore + playerTwoScore;
 
   const debouncedPlayerOneInput = useDebounce(playerOneInput, 1000);
@@ -316,15 +317,17 @@ const GamePlay = () => {
         Game Play
       </h1>
       <div className="flex flex-col justify-center items-center w-full px-28">
-        <div className="bg-white p-8 mb-8">
+        <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 mb-8 rounded-lg">
           <div className="flex flex-col justify-center items-center">
-            <div className="text-3xl font-bold">{gameScore}</div>
+            <div className="text-3xl font-bold ">{gameScore}</div>
           </div>
+ 
 
           <AudioWaveform src={TestSong} />
+ 
         </div>
         <div className="flex justify-between space-x-48">
-          <div className="bg-purple-600 p-8">
+          <div className="bg-purple-600 p-8 rounded-lg">
             <p className="mt-2 text-white">
               {playerOneInputs[playerOneInputs.length - 1]}
             </p>
@@ -345,7 +348,7 @@ const GamePlay = () => {
               className="mt-1 block w-full"
             />
           </div>
-          <div className="bg-blue-600 p-8">
+          <div className="bg-blue-600 p-8 rounded-lg">
             <p className="mt-2 text-white">
               {playerTwoInputs[playerTwoInputs.length - 1]}
             </p>
