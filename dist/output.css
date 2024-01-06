@@ -543,13 +543,21 @@ video {
   top: 0px;
 }
 
+.z-10 {
+  z-index: 10;
+}
+
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
-.-mb-12 {
-  margin-bottom: -3rem;
+.-mb-16 {
+  margin-bottom: -4rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mb-8 {
@@ -572,12 +580,16 @@ video {
   margin-top: 0.5rem;
 }
 
-.mt-28 {
-  margin-top: 7rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.ml-48 {
+  margin-left: 12rem;
 }
 
 .block {
@@ -748,6 +760,14 @@ video {
   padding-bottom: 2rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -857,11 +877,11 @@ code {
   font-size: 2rem;
   color: #4dff4d;
   text-shadow: 0 0 10px #4dff4d, 0 0 20px #4dff4d, 0 0 40px #4dff4d, 0 0 80px #4dff4d;
-  padding: 10px;
+  padding: 14px;
   border-radius: 5px;
   background-color: #000000;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-top: -10px;
 }
 
 .game-clock-flex {
@@ -869,6 +889,17 @@ code {
   font-size: 2rem;
   color: #4dff4d;
   text-shadow: 0 0 10px #4dff4d, 0 0 20px #4dff4d, 0 0 40px #4dff4d, 0 0 80px #4dff4d;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #000000;
+  display: flex;
+}
+
+.game-clock-flex-secondary {
+  font-family: 'Digital-7 Mono', monospace;
+  font-size: 2rem;
+  color: #9333e9;
+  text-shadow: 0 0 8px #9333e9, 0 0 20px #9333e9, 0 0 40px #9333e9, 0 0 80px #9333e9;
   padding: 20px;
   border-radius: 5px;
   background-color: #000000;
@@ -1019,6 +1050,20 @@ code {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:justify-evenly {
+    justify-content: space-evenly;
+  }
 }
 
 
