@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/common/Header';
+
 import Button from '../components/common/Button';
 
 const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
@@ -41,14 +41,13 @@ const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
 
   return (
     <>
-      <Header />
       <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
         <h1 className="text-white text-4xl font-bold leading-none mb-8">
           Game Setup
         </h1>
         <div className="flex justify-center w-full px-28">
           <div className="flex justify-between space-x-48">
-            <div className="bg-white p-8">
+            <div className="bg-purple-600 p-8 rounded-lg">
               <h2>Player 1 Intensity</h2>
               <input type="range" min="1" max="100" />
               <Button
@@ -56,7 +55,7 @@ const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
                 onClick={() => togglePlayerReady(1)}
               />
             </div>
-            <div className="bg-white p-8">
+            <div className="bg-blue-600 p-8 rounded-lg">
               <h2>Player 2 Intensity</h2>
               <input type="range" min="1" max="100" />
               <Button
@@ -67,7 +66,7 @@ const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
           </div>
         </div>
 
-        <div className="bg-white p-8 mt-28">
+        <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 rounded-lg mt-28">
           <h2>Game Intensity</h2>
           <input
             type="range"
