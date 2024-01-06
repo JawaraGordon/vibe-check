@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import sqlstring from 'sqlstring';
 import AudioWaveform from './features/AudioWaveform.js';
@@ -26,7 +27,7 @@ const sanitizeInputs = (input) => {
     return input;
   }
   const trimmedInput = input.trim();
-  const onlyStrings = trimmedInput.replace(/[^a-zA-Z ]/g, '');
+  const onlyStrings = trimmedInput.replace(/[^a-zA-Z ]/g, '').toLowerCase();
   const sanitizedHTML = DOMPurify.sanitize(onlyStrings);
   const sanitizedSQL = sqlstring.escape(sanitizedHTML);
   return sanitizedSQL.slice(1, -1);
@@ -236,7 +237,7 @@ const songVibeArray = [
 ];
 
 // Added default func to prevent testing type  errors
-const GamePlay = ( { onGameScoreChange = () => {} }) => {
+const GamePlay = ({ onGameScoreChange = () => {} }) => {
   const [playerOneInput, setPlayerOneInput] = useState('');
   const [playerTwoInput, setPlayerTwoInput] = useState('');
   const [playerOneInputs, setPlayerOneInputs] = useState([]);
@@ -245,13 +246,23 @@ const GamePlay = ( { onGameScoreChange = () => {} }) => {
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
   const [lastScoredWordPlayerOne, setLastScoredWordPlayerOne] = useState('');
   const [lastScoredWordPlayerTwo, setLastScoredWordPlayerTwo] = useState('');
-
+  const [isPlaying, setIsPlaying] = useState(false);
+  const navigate = useNavigate();
   let gameScore = playerOneScore + playerTwoScore;
+
+  const handleGameEnd = () => {
+    navigate('/results');
+  };
+
+  useEffect(() => {
+    setIsPlaying(true);
+  }, []);
+
+  // Handling and debouncing player inputs
   useEffect(() => {
     let gameScore = playerOneScore + playerTwoScore;
     onGameScoreChange(gameScore);
   }, [playerOneScore, playerTwoScore]);
-
   const debouncedPlayerOneInput = useDebounce(playerOneInput, 1000);
   const debouncedPlayerTwoInput = useDebounce(playerTwoInput, 1000);
 
@@ -327,7 +338,8 @@ const GamePlay = ( { onGameScoreChange = () => {} }) => {
             <div className="text-3xl font-bold ">{gameScore}</div>
           </div>
 
-          <AudioWaveform src={TestSong} />
+          <AudioWaveform src={TestSong} play={isPlaying} onTimeUpdate={handleGameEnd}/>
+          
         </div>
         <div className="flex justify-between space-x-48">
           <div className="bg-purple-600 p-8 rounded-lg">
