@@ -13,6 +13,7 @@ function App() {
   const [playerOneReady, setPlayerOneReady] = useState(false);
   const [playerTwoReady, setPlayerTwoReady] = useState(false);
   const [resetGame, setResetGame] = useState('');
+  const [songTopScore, setSongTopScore] = useState(0);
 
   const handleGameReset = () => {
     setResetGame(true);
@@ -57,6 +58,7 @@ function App() {
               onGameScoreChange={handleGameScore}
               onGameReset={handleGameReset}
               resetGame={resetGame}
+              setSongTopScore={setSongTopScore}
             />
           }
         />
@@ -68,6 +70,7 @@ function App() {
               resetGame={resetGame}
               onReset={resetPlayerButtons}
               onGameRestart={handleGameReset}
+              songTopScore={songTopScore}
             />
           }
         />

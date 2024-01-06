@@ -35,7 +35,7 @@ const sanitizeInputs = (input) => {
 };
 
 // Added default func to prevent testing type  errors
-const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
+const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange = () => {} }) => {
   const [playerOneInput, setPlayerOneInput] = useState('');
   const [playerTwoInput, setPlayerTwoInput] = useState('');
   const [playerOneInputs, setPlayerOneInputs] = useState([]);
@@ -45,6 +45,7 @@ const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
   const [lastScoredWordPlayerOne, setLastScoredWordPlayerOne] = useState('');
   const [lastScoredWordPlayerTwo, setLastScoredWordPlayerTwo] = useState('');
   const [songsVibeArray, setSongsVibeArray] = useState([]);
+
   const [gameSong, setGameSong] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
     setIsPlaying(false);
   }, [resetGame]);
 
-  // Fetch songVibeArray
+  // Fetch songVibeArray descriptions using a switch statement
   useEffect(() => {
     const fetchSongVibeArray = async () => {
       try {
@@ -85,6 +86,10 @@ const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
           console.log('SONG URL', song.url);
         });
 
+        data.forEach((song) => {
+          console.log('SONG topscore', song.topscore);
+        });
+
         // TODO create logic to take the average player intesity number and choose a song from the dataset that matches
 
         const randomNum = Math.floor(Math.random() * 4) + 1;
@@ -94,21 +99,25 @@ const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
             setGameSong(gameSongs.dimensionsSong);
             console.log('Switch case 1:', gameSongs.dimensionsSong);
             setSongsVibeArray(data[0].description);
+            setSongTopScore(data[0].topscore)
             break;
           case 2:
             setGameSong(gameSongs.vibesSong);
             console.log('Switch case 1:', gameSongs.vibesSong);
             setSongsVibeArray(data[1].description);
+            setSongTopScore(data[1].topscore)
             break;
           case 3:
             setGameSong(gameSongs.neonDreamsSong);
             console.log('Switch case 1:', gameSongs.neonDreamsSong);
             setSongsVibeArray(data[2].description);
+            setSongTopScore(data[2].topscore)
             break;
           case 4:
             setGameSong(gameSongs.downUnderSong);
             console.log('Switch case 1:', gameSongs.downUnderSong);
             setSongsVibeArray(data[3].description);
+            setSongTopScore(data[3].topscore)
             break;
           default:
             console.log('No song available.');
@@ -211,22 +220,8 @@ const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
     }
   }, [isPlaying]);
 
-  //   //Check to see if the audio is playing
-  //   useEffect(() => {
-  //     // Check if gameSong has a value and set isPlaying accordingly
-  //     if (gameSong && gameSong.length > 0) {
-  //       console.log('This is the gameSong', gameSong);
-
-  //       setIsPlaying(true);
-  //     } else {
-  //       console.log('RESET GAME - Clearing gameSong');
-  //       setGameSong('');
-  //       setIsPlaying(false);
-  //     }
-  //   }, []);
 
   // Had to put this logic inside of a side effect with a timer to fix an event bubbling / async error loading the song too quickly
-
   useEffect(() => {
     const timer = setTimeout(() => {
       // Check if gameSong has a value and set isPlaying

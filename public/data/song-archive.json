@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Dimensions",
     "intensity": "1",
+    "topscore": 5,
     "url": "music/Dimensions.mp3",
     "description": [
       "chill",
@@ -84,6 +85,7 @@
     "id": 2,
     "name": "Vibes",
     "intensity": "2",
+    "topscore": 3,
     "url": "music/VIBES.mp3",
     "description": [
       "lit",
@@ -368,6 +370,7 @@
     "id": 3,
     "name": "Neon Dreams",
     "intensity": "3",
+    "topscore": 8,
     "url": "music/Neon Dream.mp3",
     "description": [
       "synthetic",
@@ -614,6 +617,7 @@
     "id": 4,
     "name": "Down Under",
     "intensity": "4",
+    "topscore": 3,
     "url": "music/Down Under.mp3",
     "description": [
       "intense",
