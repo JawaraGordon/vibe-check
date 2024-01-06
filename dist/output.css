@@ -591,6 +591,10 @@ video {
   display: contents;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-screen {
   height: 100vh;
 }
