@@ -11,7 +11,6 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   // Monitor song length and update after 60 seconds
-
   useEffect(() => {
     const audioElement = audioRef.current;
 
@@ -41,7 +40,7 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
     const seconds = Math.floor(time % 60);
     return `${seconds < 10 ? '0' : ''}${seconds}`;
   };
-
+  // Show the song time
   useEffect(() => {
     const audioElement = audioRef.current;
 
@@ -62,7 +61,7 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
   const drawWaveform = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) {
-      return; // Exit if canvas doesn't exist
+      return;
     }
     const canvasContext = canvas.getContext('2d');
     const analyserNode = analyserRef.current;
@@ -193,7 +192,17 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
     return () => {
       cancelAnimationFrame(animationFrameIdRef.current); // Also cancel here to ensure cleanup
     };
+  }, [src]);
 
+  useEffect(() => {
+    if (!src) {
+      // Stop and reset the audio if src is null or empty
+      const audioElement = document.getElementById('gameAudioPlayer');
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+      }
+    }
   }, [src]);
 
   return (
@@ -201,7 +210,13 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
       <div>{formatTime(currentTime)}</div>
       <button onClick={startAudio}></button>
       <div className="pb-8">
-        <audio ref={audioRef} controls src={src} style={{ display: 'none' }} />
+        <audio
+          ref={audioRef}
+          id="gameAudioPlayer"
+          controls
+          src={src}
+          style={{ display: 'none' }}
+        />
       </div>
       <canvas ref={canvasRef} />
     </>

@@ -2,18 +2,25 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
 import Header from '../components/common/Header';
 
-const GameResults = ({ gameScore, onReset }) => {
+const GameResults = ({ resetGame, gameScore, onReset, onGameRestart }) => {
   const navigate = useNavigate();
 
   const handlePlayAgain = () => {
+    onGameRestart()
     onReset();
+    
     navigate('/setup');
   };
 
   const handleQuit = () => {
+    onGameRestart()
     onReset();
+    
     navigate('/');
   };
+
+
+  
 
   return (
     <>
@@ -23,20 +30,20 @@ const GameResults = ({ gameScore, onReset }) => {
           Game Results
         </h1>
         <div className="flex flex-col justify-center items-center w-full px-28">
-          <div className="bg-white p-8 mb-8">
+          <div className="bg-white rounded-lg p-8 mb-8">
             <h2>Game Results</h2>
             {/* TODO: create image element that shows game results */}
             <img src="http://" alt="Game Results"></img>
           </div>
-          <div className="flex justify-between space-x-48">
-            <div className="bg-purple-600 p-8">
+          {/* <div className="flex justify-between space-x-48">
+            <div className="bg-purple-600 p-8 rounded-lg p-8">
               <h2>Player 1 Score</h2>
             </div>
-            <div className="bg-blue-600 p-8">
+            <div className="bg-blue-600 p-8 rounded-lg p-8">
               <h2>Player 2 Score</h2>
             </div>
-          </div>
-          <div className="bg-white p-8 mt-8">
+          </div> */}
+          <div className="bg-gradient-to-r from-purple-400 to-blue-500 rounded-lg text-white p-16 my-12">
             <h2>{gameScore}</h2>
           </div>
           <div className="flex justify-evenly space-x-16 mt-4 ">

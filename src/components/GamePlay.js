@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import sqlstring from 'sqlstring';
 import AudioWaveform from './features/AudioWaveform.js';
-import TestSong from '../assets/audio/Dimensions.mp3';
+import Dimensions from '../assets/audio/Dimensions.mp3';
+import Vibes from '../assets/audio/VIBES.mp3';
+import NeonDreams from '../assets/audio/Neon Dreams.mp3';
+import DownUnder from '../assets/audio/Down Under.mp3';
 
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
-
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
@@ -17,7 +19,6 @@ function useDebounce(value, delay) {
       clearTimeout(handler);
     };
   }, [value, delay]);
-
   return debouncedValue;
 }
 
@@ -33,211 +34,8 @@ const sanitizeInputs = (input) => {
   return sanitizedSQL.slice(1, -1);
 };
 
-const songVibeArray = [
-  'chill',
-  'downtempo',
-  'wavy',
-  'relaxing',
-  'soothing',
-  'mellow',
-  'serene',
-  'ambient',
-  'atmospheric',
-  'smooth',
-  'tranquil',
-  'laid-back',
-  'groovy',
-  'ethereal',
-  'dreamy',
-  'soft',
-  'jazzy',
-  'melodic',
-  'harmonic',
-  'rhythmic',
-  'synthy',
-  'deep',
-  'lo-fi',
-  'vibey',
-  'spacey',
-  'minimal',
-  'sultry',
-  'moody',
-  'flowing',
-  'lush',
-  'meditative',
-  'introspective',
-  'gentle',
-  'subdued',
-  'funky',
-  'beat-driven',
-  'soulful',
-  'downbeat',
-  'syncopated',
-  'electronic',
-  'echoing',
-  'reverberating',
-  'hypnotic',
-  'subtle',
-  'dynamic',
-  'velvety',
-  'warm',
-  'cool',
-  'breezy',
-  'airy',
-  'whimsical',
-  'nostalgic',
-  'contemplative',
-  'pensive',
-  'steady',
-  'slow-paced',
-  'mystical',
-  'enigmatic',
-  'nebulous',
-  'muted',
-  'faded',
-  'blurry',
-  'shadowy',
-  'hazy',
-  'misty',
-  'saturated',
-  'desaturated',
-  'monochromatic',
-  'colorful',
-  'bright',
-  'dark',
-  'vivid',
-  'pastel',
-  'neon',
-  'gloomy',
-  'glowing',
-  'shimmering',
-  'sparkling',
-  'twinkling',
-  'glistening',
-  'reflective',
-  'glittering',
-  'sleek',
-  'polished',
-  'refined',
-  'classy',
-  'stylish',
-  'tasteful',
-  'trendy',
-  'hip',
-  'cool',
-  'in-vogue',
-  'fashionable',
-  'retro',
-  'vintage',
-  'timeless',
-  'classic',
-  'ageless',
-  'evergreen',
-  'modern',
-  'contemporary',
-  'futuristic',
-  'ahead-of-time',
-  'progressive',
-  'innovative',
-  'cutting-edge',
-  'avant-garde',
-  'experimental',
-  'unconventional',
-  'unique',
-  'distinctive',
-  'idiosyncratic',
-  'individualistic',
-  'quirky',
-  'eccentric',
-  'unorthodox',
-  'offbeat',
-  'outlandish',
-  'exotic',
-  'foreign',
-  'alien',
-  'otherworldly',
-  'supernatural',
-  'celestial',
-  'cosmic',
-  'interstellar',
-  'galactic',
-  'astral',
-  'stellar',
-  'planetary',
-  'solar',
-  'lunar',
-  'starlit',
-  'moonlit',
-  'radiant',
-  'luminous',
-  'lustrous',
-  'incandescent',
-  'candescent',
-  'fiery',
-  'glowing',
-  'ablaze',
-  'flickering',
-  'flaming',
-  'burning',
-  'scorching',
-  'sizzling',
-  'hot',
-  'warm',
-  'toasty',
-  'snug',
-  'cozy',
-  'comfortable',
-  'welcoming',
-  'homey',
-  'domestic',
-  'familiar',
-  'friendly',
-  'inviting',
-  'alluring',
-  'appealing',
-  'charming',
-  'captivating',
-  'enchanting',
-  'bewitching',
-  'mesmerizing',
-  'spellbinding',
-  'entrancing',
-  'seductive',
-  'irresistible',
-  'all-consuming',
-  'engrossing',
-  'absorbing',
-  'compelling',
-  'fascinating',
-  'riveting',
-  'gripping',
-  'enthralling',
-  'intoxicating',
-  'addictive',
-  'habit-forming',
-  'unforgettable',
-  'memorable',
-  'noteworthy',
-  'remarkable',
-  'impressive',
-  'striking',
-  'sensational',
-  'phenomenal',
-  'extraordinary',
-  'incredible',
-  'unbelievable',
-  'astonishing',
-  'amazing',
-  'wondrous',
-  'marvelous',
-  'spectacular',
-  'magnificent',
-  'grand',
-  'majestic'
-];
-
 // Added default func to prevent testing type  errors
-const GamePlay = ({ onGameScoreChange = () => {} }) => {
+const GamePlay = ({ resetGame, onGameReset, onGameScoreChange = () => {} }) => {
   const [playerOneInput, setPlayerOneInput] = useState('');
   const [playerTwoInput, setPlayerTwoInput] = useState('');
   const [playerOneInputs, setPlayerOneInputs] = useState([]);
@@ -246,17 +44,91 @@ const GamePlay = ({ onGameScoreChange = () => {} }) => {
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
   const [lastScoredWordPlayerOne, setLastScoredWordPlayerOne] = useState('');
   const [lastScoredWordPlayerTwo, setLastScoredWordPlayerTwo] = useState('');
+  const [songsVibeArray, setSongsVibeArray] = useState([]);
+  const [gameSong, setGameSong] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const navigate = useNavigate();
-  let gameScore = playerOneScore + playerTwoScore;
 
-  const handleGameEnd = () => {
-    navigate('/results');
+  let gameScore = playerOneScore + playerTwoScore;
+  const dimensionsSong = Dimensions;
+  const vibesSong = Vibes;
+  const neonDreamsSong = NeonDreams;
+  const downUnderSong = DownUnder;
+  const gameSongs = {
+    dimensionsSong,
+    vibesSong,
+    neonDreamsSong,
+    downUnderSong
   };
 
+  //   Handle resetting audio at game restart
   useEffect(() => {
-    setIsPlaying(true);
+    console.log('RESET GAME');
+    setGameSong('');
+    setIsPlaying(false);
+  }, [resetGame]);
+
+  // Fetch songVibeArray
+  useEffect(() => {
+    const fetchSongVibeArray = async () => {
+      try {
+        const response = await fetch('../data/song-archive.json');
+        if (!response.ok) {
+          throw new Error('Server error: Please try again.');
+        }
+        const data = await response.json();
+
+        console.log('Vibe Array', data);
+
+        // Log the names of each song
+        data.forEach((song) => {
+          console.log('SONG URL', song.url);
+        });
+
+        // TODO create logic to take the average player intesity number and choose a song from the dataset that matches
+
+        const randomNum = Math.floor(Math.random() * 4) + 1;
+
+        switch (randomNum) {
+          case 1:
+            setGameSong(gameSongs.dimensionsSong);
+            console.log('Switch case 1:', gameSongs.dimensionsSong);
+            setSongsVibeArray(data[0].description);
+            break;
+          case 2:
+            setGameSong(gameSongs.vibesSong);
+            console.log('Switch case 1:', gameSongs.vibesSong);
+            setSongsVibeArray(data[1].description);
+            break;
+          case 3:
+            setGameSong(gameSongs.neonDreamsSong);
+            console.log('Switch case 1:', gameSongs.neonDreamsSong);
+            setSongsVibeArray(data[2].description);
+            break;
+          case 4:
+            setGameSong(gameSongs.downUnderSong);
+            console.log('Switch case 1:', gameSongs.downUnderSong);
+            setSongsVibeArray(data[3].description);
+            break;
+          default:
+            console.log('No song available.');
+        }
+      } catch (error) {
+        console.error(
+          'There has been a problem with your fetch operation:',
+          error
+        );
+      }
+    };
+
+    fetchSongVibeArray();
   }, []);
+
+  const handleGameEnd = () => {
+    setGameSong('');
+    setIsPlaying(false);
+    navigate('/results');
+  };
 
   // Handling and debouncing player inputs
   useEffect(() => {
@@ -301,7 +173,7 @@ const GamePlay = ({ onGameScoreChange = () => {} }) => {
   }, [debouncedPlayerTwoInput, playerTwoInputs, playerOneInputs]);
 
   useEffect(() => {
-    const isSongInVibeArray = (word) => songVibeArray.includes(word);
+    const isSongInVibeArray = (word) => songsVibeArray.includes(word);
     const isWordNew = (word, wordArray) =>
       wordArray.lastIndexOf(word) === wordArray.length - 1;
 
@@ -327,6 +199,51 @@ const GamePlay = ({ onGameScoreChange = () => {} }) => {
     }
   }, [playerOneInputs, playerTwoInputs]);
 
+  useEffect(() => {
+    // This effect runs when `isPlaying` or `gameSong` changes.
+    // If `isPlaying` is false or `gameSong` is reset, it ensures audio is stopped/cleared.
+    const audioElement = document.getElementById('audioElementId');
+    if (!isPlaying || !gameSong) {
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.src = '';
+      }
+    }
+  }, [isPlaying]);
+
+  //   //Check to see if the audio is playing
+  //   useEffect(() => {
+  //     // Check if gameSong has a value and set isPlaying accordingly
+  //     if (gameSong && gameSong.length > 0) {
+  //       console.log('This is the gameSong', gameSong);
+
+  //       setIsPlaying(true);
+  //     } else {
+  //       console.log('RESET GAME - Clearing gameSong');
+  //       setGameSong('');
+  //       setIsPlaying(false);
+  //     }
+  //   }, []);
+
+  // Had to put this logic inside of a side effect with a timer to fix an event bubbling / async error loading the song too quickly
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Check if gameSong has a value and set isPlaying
+      if (gameSong && gameSong.length > 0) {
+        console.log('This is the gameSong', gameSong);
+        setIsPlaying(true);
+      } else {
+        console.log('RESET GAME - Clearing gameSong');
+        setGameSong('');
+        setIsPlaying(false);
+      }
+    }, 1000);
+
+    // Clear timer when component unmounts or when gameSong changes
+    return () => clearTimeout(timer);
+  }, [gameSong]);
+
   return (
     <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
       <h1 className="text-white text-4xl font-bold leading-none mb-8">
@@ -338,8 +255,14 @@ const GamePlay = ({ onGameScoreChange = () => {} }) => {
             <div className="text-3xl font-bold ">{gameScore}</div>
           </div>
 
-          <AudioWaveform src={TestSong} play={isPlaying} onTimeUpdate={handleGameEnd}/>
-          
+          {gameSong && (
+            <AudioWaveform
+              src={gameSong}
+              play={isPlaying}
+              onTimeUpdate={handleGameEnd}
+              id="audioElementId"
+            />
+          )}
         </div>
         <div className="flex justify-between space-x-48">
           <div className="bg-purple-600 p-8 rounded-lg">
