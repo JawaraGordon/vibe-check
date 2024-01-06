@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import './App.css';
+import './index.css';
 import Main from './components/Main';
 import GameSetup from './components/GameSetup';
 import GamePlay from './components/GamePlay';
