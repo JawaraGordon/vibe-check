@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import './index.css';
 import Main from './components/Main';
@@ -12,6 +12,12 @@ function App() {
   const [gameScore, setGameScore] = useState(0);
   const [playerOneReady, setPlayerOneReady] = useState(false);
   const [playerTwoReady, setPlayerTwoReady] = useState(false);
+  const [resetGame, setResetGame] = useState('');
+  const [songTopScore, setSongTopScore] = useState(0);
+
+  const handleGameReset = () => {
+    setResetGame(true);
+  };
 
   const handleGameScore = (score) => {
     setGameScore(score);
@@ -47,12 +53,25 @@ function App() {
         <Route path="/load" element={<GameLoad />} />
         <Route
           path="/play"
-          element={<GamePlay onGameScoreChange={handleGameScore} />}
+          element={
+            <GamePlay
+              onGameScoreChange={handleGameScore}
+              onGameReset={handleGameReset}
+              resetGame={resetGame}
+              setSongTopScore={setSongTopScore}
+            />
+          }
         />
         <Route
           path="/results"
           element={
-            <GameResults gameScore={gameScore} onReset={resetPlayerButtons} />
+            <GameResults
+              gameScore={gameScore}
+              resetGame={resetGame}
+              onReset={resetPlayerButtons}
+              onGameRestart={handleGameReset}
+              songTopScore={songTopScore}
+            />
           }
         />
       </Routes>
