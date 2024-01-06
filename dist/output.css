@@ -543,18 +543,21 @@ video {
   top: 0px;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
+.-mb-12 {
+  margin-bottom: -3rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.ml-40 {
+  margin-left: 10rem;
 }
 
 .mr-4 {
@@ -575,10 +578,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .block {
@@ -619,6 +618,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
@@ -686,13 +689,13 @@ video {
   background-color: rgb(147 51 234 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-transparent {
-  background-color: transparent;
 }
 
 .bg-gradient-to-r {
@@ -709,20 +712,16 @@ video {
   --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position);
 }
 
+.p-16 {
+  padding: 4rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-28 {
-  padding: 7rem;
-}
-
-.p-16 {
-  padding: 4rem;
 }
 
 .px-28 {
@@ -753,14 +752,24 @@ video {
   text-align: center;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
 }
 
 .text-lg {
@@ -841,6 +850,29 @@ input:hover {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.game-clock {
+  font-family: 'Digital-7 Mono', monospace;
+  font-size: 2rem;
+  color: #4dff4d;
+  text-shadow: 0 0 10px #4dff4d, 0 0 20px #4dff4d, 0 0 40px #4dff4d, 0 0 80px #4dff4d;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #000000;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.game-clock-flex {
+  font-family: 'Digital-7 Mono', monospace;
+  font-size: 2rem;
+  color: #4dff4d;
+  text-shadow: 0 0 10px #4dff4d, 0 0 20px #4dff4d, 0 0 40px #4dff4d, 0 0 80px #4dff4d;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #000000;
+  display: flex;
 }
 
 .area {
