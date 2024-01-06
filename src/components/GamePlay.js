@@ -246,8 +246,8 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
       </h1> */}
       <div className="flex flex-col justify-center items-center w-full px-28">
         <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 mb-8 rounded-lg">
-        <div className="flex flex-col items-end ml-40 -mb-12 w-1/3">
-  <div className="text-5xl text-white font-bold">{gameScore}</div>
+        <div className="flex flex-col items-end ml-48 -mb-16 w-1/3">
+  <div className="text-5xl text-white font-bold game-clock-flex-secondary">{gameScore}</div>
 </div>
 
 
@@ -262,15 +262,9 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
         </div>
         <div className="flex justify-between space-x-48">
           <div className="bg-purple-600 p-8 rounded-lg">
-            <p className="mt-2 text-white">
+            <p className="mt-2 text-white text-center text-lg pb-4">
               {playerOneInputs[playerOneInputs.length - 1]}
             </p>
-            <label
-              htmlFor="playerOneInput"
-              className="block text-lg font-medium text-gray-700"
-            >
-              Player One
-            </label>
             <input
               id="playerOneInput"
               type="text"
@@ -281,17 +275,18 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
               maxLength={20}
               className="mt-1 block w-full"
             />
+            <label
+              htmlFor="playerOneInput"
+              className="block text-lg text-white text-center font-medium pt-4"
+            >
+              Player One
+            </label>
           </div>
           <div className="bg-blue-600 p-8 rounded-lg">
-            <p className="mt-2 text-white">
+            <p className="mt-2 text-white text-center text-lg pb-4">
               {playerTwoInputs[playerTwoInputs.length - 1]}
             </p>
-            <label
-              htmlFor="playerTwoInput"
-              className="block text-lg font-medium text-gray-700"
-            >
-              Player Two
-            </label>
+           
             <input
               id="playerTwoInput"
               type="text"
@@ -302,6 +297,12 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
               maxLength={20}
               className="mt-1 block w-full"
             />
+             <label
+              htmlFor="playerTwoInput"
+              className="block text-lg text-white text-center font-medium pt-4"
+            >
+              Player Two
+            </label>
           </div>
         </div>
       </div>

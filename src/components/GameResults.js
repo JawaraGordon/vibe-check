@@ -26,7 +26,7 @@ const GameResults = ({ songTopScore, gameScore, onReset, onGameRestart }) => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
         {/* <h1 className="text-white text-4xl font-bold leading-none mb-8">
           Game Results
@@ -41,7 +41,7 @@ const GameResults = ({ songTopScore, gameScore, onReset, onGameRestart }) => {
     <h2 className="game-clock-flex" >{songTopScore}</h2>
   </div>
   <div className="bg-transparent rounded-lg text-6xl text-white font-bold p-16 my-12">
-    <h2>{gameScore}</h2>
+    <h2 className="game-clock-flex-secondary">{gameScore}</h2>
   </div>
 </div>
 
