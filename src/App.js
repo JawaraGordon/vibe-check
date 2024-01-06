@@ -25,18 +25,25 @@ function App() {
     }
   };
 
+  const resetPlayerButtons = () => {
+    setPlayerOneReady(false);
+    setPlayerTwoReady(false);
+  };
 
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/setup" element={
-          <GameSetup 
-            onPlayerReady={handlePlayerReady}
-            playerOneReady={playerOneReady}
-            playerTwoReady={playerTwoReady}
-          />
-        }/>
+        <Route
+          path="/setup"
+          element={
+            <GameSetup
+              onPlayerReady={handlePlayerReady}
+              playerOneReady={playerOneReady}
+              playerTwoReady={playerTwoReady}
+            />
+          }
+        />
         <Route path="/load" element={<GameLoad />} />
         <Route
           path="/play"
@@ -44,7 +51,9 @@ function App() {
         />
         <Route
           path="/results"
-          element={<GameResults gameScore={gameScore} />}
+          element={
+            <GameResults gameScore={gameScore} onReset={resetPlayerButtons} />
+          }
         />
       </Routes>
     </Router>
