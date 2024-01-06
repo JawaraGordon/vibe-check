@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
 import Header from '../components/common/Header';
 
 const Main = () => {
+  const navigate = useNavigate();
+
+  const handleStartClick = () => {
+    navigate('/setup'); // Navigates to the setup screen
+  };
+
   return (
     <>
       <Header />
@@ -10,7 +17,7 @@ const Main = () => {
           Vibe Check
         </h1>
         <div className="flex flex-row justify-evenly items-center w-full max-w-xs">
-          <Button label="Start" onClick={() => {}} />
+          <Button label="Start" onClick={handleStartClick} />
           <Button label="Exit" onClick={() => {}} />
         </div>
       </div>
