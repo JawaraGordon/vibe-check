@@ -36,9 +36,15 @@ const GameResults = ({ songTopScore, gameScore, onReset, onGameRestart }) => {
             {/* <h2>Game Results</h2> */}
             <img src={resultImageSrc} alt="Game Results" />
           </div>
-          <div className="bg-gradient-to-r from-purple-400 to-blue-500 rounded-lg text-white p-16 my-12">
-            <h2>{gameScore}</h2>
-          </div>
+          <div className="flex justify-evenly items-center w-full">
+  <div className="bg-transparent rounded-lg text-8xl text-white font-bold p-16 my-12">
+    <h2 className="game-clock-flex" >{songTopScore}</h2>
+  </div>
+  <div className="bg-transparent rounded-lg text-6xl text-white font-bold p-16 my-12">
+    <h2>{gameScore}</h2>
+  </div>
+</div>
+
           <div className="flex justify-evenly space-x-16 mt-4 ">
             <Button
               label="Play Again"

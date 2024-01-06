@@ -30,6 +30,29 @@ code {
     monospace;
 }
 
+.game-clock {
+  font-family: 'Digital-7 Mono', monospace; 
+  font-size: 2rem;
+  color: #4dff4d; 
+  text-shadow: 0 0 10px #4dff4d, 0 0 20px #4dff4d, 0 0 40px #4dff4d, 0 0 80px #4dff4d; 
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #000000; 
+  display: inline-block; 
+  margin-bottom: 20px;
+}
+.game-clock-flex {
+  font-family: 'Digital-7 Mono', monospace; 
+  font-size: 2rem;
+  color: #4dff4d; 
+  text-shadow: 0 0 10px #4dff4d, 0 0 20px #4dff4d, 0 0 40px #4dff4d, 0 0 80px #4dff4d; 
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #000000; 
+  display: flex; 
+
+}
+
 .area {
   background: #4e54c8;
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);

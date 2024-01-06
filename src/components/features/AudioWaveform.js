@@ -207,7 +207,10 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
 
   return (
     <>
-      <div>{formatTime(currentTime)}</div>
+      
+      <div className="game-clock">{formatTime(currentTime)}
+      </div>
+
       <button onClick={startAudio}></button>
       <div className="pb-8">
         <audio

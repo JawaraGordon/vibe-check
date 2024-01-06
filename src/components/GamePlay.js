@@ -241,14 +241,15 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
 
   return (
     <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
-      <h1 className="text-white text-4xl font-bold leading-none mb-8">
+      {/* <h1 className="text-white text-4xl font-bold leading-none mb-8">
         Game Play
-      </h1>
+      </h1> */}
       <div className="flex flex-col justify-center items-center w-full px-28">
         <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 mb-8 rounded-lg">
-          <div className="flex flex-col justify-center items-center">
-            <div className="text-3xl font-bold ">{gameScore}</div>
-          </div>
+        <div className="flex flex-col items-end ml-40 -mb-12 w-1/3">
+  <div className="text-5xl text-white font-bold">{gameScore}</div>
+</div>
+
 
           {gameSong && (
             <AudioWaveform
