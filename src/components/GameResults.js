@@ -1,6 +1,20 @@
+import { useNavigate } from 'react-router-dom';
+import Button from '../components/common/Button';
 import Header from '../components/common/Header';
 
-const GameResults = ({gameScore}) => {
+const GameResults = ({ gameScore, onReset }) => {
+  const navigate = useNavigate();
+
+  const handlePlayAgain = () => {
+    onReset();
+    navigate('/setup');
+  };
+
+  const handleQuit = () => {
+    onReset();
+    navigate('/');
+  };
+
   return (
     <>
       <Header />
@@ -24,6 +38,18 @@ const GameResults = ({gameScore}) => {
           </div>
           <div className="bg-white p-8 mt-8">
             <h2>{gameScore}</h2>
+          </div>
+          <div className="flex justify-evenly space-x-16 mt-4 ">
+            <Button
+              label="Play Again"
+              onClick={handlePlayAgain}
+              className="bg-gray-500 text-white px-4 py-2 rounded"
+            ></Button>
+            <Button
+              label="Quit"
+              onClick={handleQuit}
+              className="bg-gray-500 text-white px-4 py-2 rounded"
+            ></Button>
           </div>
         </div>
       </div>
