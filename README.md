@@ -73,5 +73,5 @@ Please note that "Vibe Check" harnesses the innovative capabilities of artificia
 ### AI Tools 
 
 - **Figma** 
-- **GitHub CoPilot:** 
+- **GitHub CoPilot** 
 - **ChatGPT** 
