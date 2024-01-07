@@ -14,6 +14,17 @@ function App() {
   const [playerTwoReady, setPlayerTwoReady] = useState(false);
   const [resetGame, setResetGame] = useState('');
   const [songTopScore, setSongTopScore] = useState(0);
+  const [playerOneIntensity, setPlayerOneIntensity] = useState(0);
+  const [playerTwoIntensity, setPlayerTwoIntensity] = useState(0);
+  const [gameIntensity, setGameIntensity] = useState(2);
+
+  // Handle gameIntensity
+  useEffect(() => {
+    const calculatedIntensity = Math.floor(
+      (parseInt(playerOneIntensity) + parseInt(playerTwoIntensity)) / 2
+    );
+    setGameIntensity(calculatedIntensity);
+  }, [playerOneIntensity, playerTwoIntensity]);
 
   const handleGameReset = () => {
     setResetGame(true);
@@ -44,9 +55,15 @@ function App() {
           path="/setup"
           element={
             <GameSetup
-              onPlayerReady={handlePlayerReady}
+            onPlayerReady={handlePlayerReady}
               playerOneReady={playerOneReady}
               playerTwoReady={playerTwoReady}
+              gameIntensity={gameIntensity}
+              setGameIntensity={setGameIntensity}
+              playerOneIntensity={playerOneIntensity}
+              setPlayerOneIntensity={setPlayerOneIntensity}
+              playerTwoIntensity={playerTwoIntensity}
+              setPlayerTwoIntensity={setPlayerTwoIntensity}
             />
           }
         />
@@ -59,6 +76,7 @@ function App() {
               onGameReset={handleGameReset}
               resetGame={resetGame}
               setSongTopScore={setSongTopScore}
+              gameIntensity={gameIntensity}
             />
           }
         />
