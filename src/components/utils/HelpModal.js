@@ -7,7 +7,7 @@ const HelpModal = ({ onClose }) => {
         </button>
         <h2 className="modal-sub-header">Game Start</h2>
         <p className="modal-text">
-          Begin your musical journey by pressing the "Start button.
+          Begin your musical journey by pressing the "Start" button.
         </p>
 
         <h2 className="modal-sub-header">Game Setup</h2>
