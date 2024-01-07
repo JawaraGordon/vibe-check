@@ -35,7 +35,12 @@ const sanitizeInputs = (input) => {
 };
 
 // Added default func to prevent testing type  errors
-const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange = () => {} }) => {
+const GamePlay = ({
+  setSongTopScore,
+  resetGame,
+  gameIntensity,
+  onGameScoreChange = () => {}
+}) => {
   const [playerOneInput, setPlayerOneInput] = useState('');
   const [playerTwoInput, setPlayerTwoInput] = useState('');
   const [playerOneInputs, setPlayerOneInputs] = useState([]);
@@ -90,34 +95,30 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
           console.log('SONG topscore', song.topscore);
         });
 
-        // TODO create logic to take the average player intesity number and choose a song from the dataset that matches
-
-        const randomNum = Math.floor(Math.random() * 4) + 1;
-
-        switch (randomNum) {
+        switch (gameIntensity) {
           case 1:
             setGameSong(gameSongs.dimensionsSong);
             console.log('Switch case 1:', gameSongs.dimensionsSong);
             setSongsVibeArray(data[0].description);
-            setSongTopScore(data[0].topscore)
+            setSongTopScore(data[0].topscore);
             break;
           case 2:
             setGameSong(gameSongs.vibesSong);
             console.log('Switch case 1:', gameSongs.vibesSong);
             setSongsVibeArray(data[1].description);
-            setSongTopScore(data[1].topscore)
+            setSongTopScore(data[1].topscore);
             break;
           case 3:
             setGameSong(gameSongs.neonDreamsSong);
             console.log('Switch case 1:', gameSongs.neonDreamsSong);
             setSongsVibeArray(data[2].description);
-            setSongTopScore(data[2].topscore)
+            setSongTopScore(data[2].topscore);
             break;
           case 4:
             setGameSong(gameSongs.downUnderSong);
             console.log('Switch case 1:', gameSongs.downUnderSong);
             setSongsVibeArray(data[3].description);
-            setSongTopScore(data[3].topscore)
+            setSongTopScore(data[3].topscore);
             break;
           default:
             console.log('No song available.');
@@ -220,7 +221,6 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
     }
   }, [isPlaying]);
 
-
   // Had to put this logic inside of a side effect with a timer to fix an event bubbling / async error loading the song too quickly
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -246,10 +246,11 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
       </h1> */}
       <div className="flex flex-col justify-center items-center w-full px-28">
         <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 mb-8 rounded-lg">
-        <div className="flex flex-col items-end ml-48 -mb-16 w-1/3">
-  <div className="text-5xl text-white font-bold game-clock-flex-secondary">{gameScore}</div>
-</div>
-
+          <div className="flex flex-col items-end ml-48 -mb-16 w-1/3">
+            <div className="text-5xl text-white font-bold game-clock-flex-secondary">
+              {gameScore}
+            </div>
+          </div>
 
           {gameSong && (
             <AudioWaveform
@@ -286,7 +287,7 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
             <p className="mt-2 text-white text-center text-lg pb-4">
               {playerTwoInputs[playerTwoInputs.length - 1]}
             </p>
-           
+
             <input
               id="playerTwoInput"
               type="text"
@@ -297,7 +298,7 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
               maxLength={20}
               className="mt-1 block w-full"
             />
-             <label
+            <label
               htmlFor="playerTwoInput"
               className="block text-lg text-white text-center font-medium pt-4"
             >
