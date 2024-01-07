@@ -228,10 +228,7 @@ const GamePlay = ({
 
   return (
     <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
-      {/* <h1 className="text-white text-4xl font-bold leading-none mb-8">
-        Game Play
-      </h1> */}
-      <div className="flex flex-col justify-center items-center w-full px-28">
+      <div className="flex flex-col justify-center items-center w-full px-20">
         <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 mb-8 rounded-lg">
           <div className="flex flex-col items-end ml-48 -mb-16 w-1/3">
             <div className="text-5xl text-white font-bold game-clock-flex-secondary">
@@ -248,7 +245,7 @@ const GamePlay = ({
             />
           )}
         </div>
-        <div className="flex justify-between space-x-48">
+        <div className="flex justify-between space-x-4">
           <div className="bg-purple-600 p-8 rounded-lg">
             <p className="mt-2 text-white text-center text-lg pb-4">
               {playerOneInputs[playerOneInputs.length - 1]}
