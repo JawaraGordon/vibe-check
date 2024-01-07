@@ -31,9 +31,9 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
       cancelAnimationFrame(onTimeUpdateInternal);
     };
     // Cancel canvas animation on unmount
-    return () => {
-      cancelAnimationFrame(animationFrameIdRef.current);
-    };
+    // return () => {
+    //   cancelAnimationFrame(animationFrameIdRef.current);
+    // };
   }, [onTimeUpdate]);
 
   const formatTime = (time) => {
@@ -189,10 +189,10 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
     };
 
     // Cleanup the canvas animation
-    return () => {
-      cancelAnimationFrame(animationFrameIdRef.current); // Also cancel here to ensure cleanup
-    };
-  }, [src]);
+    // return () => {
+    //   cancelAnimationFrame(animationFrameIdRef.current); // Also cancel here to ensure cleanup
+    // };
+  }, [src, drawWaveform]);
 
   useEffect(() => {
     if (!src) {

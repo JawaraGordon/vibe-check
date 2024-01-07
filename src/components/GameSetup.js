@@ -52,8 +52,8 @@ const GameSetup = ({
     }
 
     return () => {
-      // clearTimeout(timeoutId);
-      // clearInterval(countdownId);
+      clearTimeout(timeoutId);
+      
     };
   }, [playerOneReady, playerTwoReady, navigate]);
 
