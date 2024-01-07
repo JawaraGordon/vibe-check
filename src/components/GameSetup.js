@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
+import CountdownModal from '../components/utils/CountdownModal';
 import SongIntensity from '../../src/assets/images/game-setup.png';
 
 const GameSetup = ({
@@ -16,7 +17,8 @@ const GameSetup = ({
 
   const navigate = useNavigate();
 
-  
+  const [showModal, setShowModal] = useState(false);
+  const [countdown, setCountdown] = useState(3);
   
 
   const togglePlayerReady = (playerNumber) => {
@@ -31,29 +33,55 @@ const GameSetup = ({
   };
 
   // Starts countdown when both players are ready
+  // useEffect(() => {
+  //   let timeoutId;
+  //   let countdownId;
+  //   if (playerOneReady && playerTwoReady) {
+  //     let countdown = 3;
+  //     countdownId = setInterval(() => {
+  //       console.log(`Navigating in ${countdown} seconds...`);
+  //       countdown--;
+  //     }, 1000);
+  //     timeoutId = setTimeout(() => {
+  //       clearInterval(countdownId);
+  //       navigate('/play');
+  //     }, 3000);
+  //   }
+
+  //   return () => {
+  //     clearTimeout(timeoutId);
+  //     clearInterval(countdownId);
+  //   };
+  // }, [playerOneReady, playerTwoReady, navigate]);
+
   useEffect(() => {
     let timeoutId;
-    let countdownId;
     if (playerOneReady && playerTwoReady) {
-      let countdown = 3;
-      countdownId = setInterval(() => {
-        console.log(`Navigating in ${countdown} seconds...`);
-        countdown--;
+      setShowModal(true); // Show the modal
+      let countdownValue = 3;
+      setCountdown(countdownValue);
+
+      const countdownId = setInterval(() => {
+        countdownValue--;
+        setCountdown(countdownValue);
       }, 1000);
+
       timeoutId = setTimeout(() => {
         clearInterval(countdownId);
+        setShowModal(false); 
         navigate('/play');
       }, 3000);
     }
 
     return () => {
-      clearTimeout(timeoutId);
-      clearInterval(countdownId);
+      // clearTimeout(timeoutId);
+      // clearInterval(countdownId);
     };
   }, [playerOneReady, playerTwoReady, navigate]);
 
   return (
     <>
+     {showModal && <CountdownModal countdown={countdown} />}
       <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
         <div className="mb-8">
           <img src={SongIntensity} alt="Song Intensity Logo" />
