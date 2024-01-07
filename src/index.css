@@ -40,6 +40,7 @@ code {
   background-color: #000000; 
   display: inline-block; 
   margin-top: -10px;
+  
 }
 
 .game-clock-flex {
@@ -51,7 +52,8 @@ code {
   border-radius: 5px;
   background-color: #000000; 
   display: flex; 
-
+  width: 100%;
+  justify-content: center;
 }
 .game-clock-flex-secondary {
   font-family: 'Digital-7 Mono', monospace; 
@@ -62,8 +64,10 @@ code {
   border-radius: 5px;
   background-color: #000000; 
   display: flex; 
-
+  width: 100%;
+  justify-content: center;
 }
+
 
 .area {
   background: #4e54c8;

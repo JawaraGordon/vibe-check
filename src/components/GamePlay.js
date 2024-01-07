@@ -260,51 +260,47 @@ const GamePlay = ({ setSongTopScore, resetGame, onGameReset, onGameScoreChange =
             />
           )}
         </div>
-        <div className="flex justify-between space-x-48">
-          <div className="bg-purple-600 p-8 rounded-lg">
-            <p className="mt-2 text-white text-center text-lg pb-4">
-              {playerOneInputs[playerOneInputs.length - 1]}
-            </p>
-            <input
-              id="playerOneInput"
-              type="text"
-              value={playerOneInput}
-              onChange={(e) =>
-                setPlayerOneInput(sanitizeInputs(e.target.value))
-              }
-              maxLength={20}
-              className="mt-1 block w-full"
-            />
-            <label
-              htmlFor="playerOneInput"
-              className="block text-lg text-white text-center font-medium pt-4"
-            >
-              Player One
-            </label>
-          </div>
-          <div className="bg-blue-600 p-8 rounded-lg">
-            <p className="mt-2 text-white text-center text-lg pb-4">
-              {playerTwoInputs[playerTwoInputs.length - 1]}
-            </p>
-           
-            <input
-              id="playerTwoInput"
-              type="text"
-              value={playerTwoInput}
-              onChange={(e) =>
-                setPlayerTwoInput(sanitizeInputs(e.target.value))
-              }
-              maxLength={20}
-              className="mt-1 block w-full"
-            />
-             <label
-              htmlFor="playerTwoInput"
-              className="block text-lg text-white text-center font-medium pt-4"
-            >
-              Player Two
-            </label>
-          </div>
-        </div>
+        <div className="flex flex-col md:flex-row justify-between space-x-0 md:space-x-24">
+  <div className="bg-purple-600 p-8 rounded-lg mb-4 md:mb-0">
+    <p className="mt-2 text-white text-center text-lg pb-4">
+      {playerOneInputs[playerOneInputs.length - 1]}
+    </p>
+    <input
+      id="playerOneInput"
+      type="text"
+      value={playerOneInput}
+      onChange={(e) => setPlayerOneInput(sanitizeInputs(e.target.value))}
+      maxLength={20}
+      className="mt-1 block w-full"
+    />
+    <label
+      htmlFor="playerOneInput"
+      className="block text-lg text-white text-center font-medium pt-4"
+    >
+      Player One
+    </label>
+  </div>
+  <div className="bg-blue-600 p-8 rounded-lg">
+    <p className="mt-2 text-white text-center text-lg pb-4">
+      {playerTwoInputs[playerTwoInputs.length - 1]}
+    </p>
+    <input
+      id="playerTwoInput"
+      type="text"
+      value={playerTwoInput}
+      onChange={(e) => setPlayerTwoInput(sanitizeInputs(e.target.value))}
+      maxLength={20}
+      className="mt-1 block w-full"
+    />
+    <label
+      htmlFor="playerTwoInput"
+      className="block text-lg text-white text-center font-medium pt-4"
+    >
+      Player Two
+    </label>
+  </div>
+</div>
+
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
-import SongIntensity from '../../src/assets/images/game-setup.png';
+import SongIntensity from '../../src/assets/images/game-setup-md.png';
 
 const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
   const navigate = useNavigate();
@@ -45,13 +45,13 @@ const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
   {/* <h1 className="text-white text-4xl font-bold leading-none mb-8">
     Game Setup
   </h1> */}
-  <div className="mb-8">
+  <div className="-mb-2">
     <img src={SongIntensity} alt="Song Intensity Logo" />
   </div>
   <div className="flex flex-col md:flex-row md:justify-evenly items-center w-full px-28">
-    <div className="bg-purple-600 p-8 rounded-lg text-white flex flex-col items-center mb-8 md:mb-0">
+    <div className="bg-purple-600 p-8 rounded-lg text-white flex flex-col items-center mb-4 md:mb-0">
       <h2>Player 1 Intensity</h2>
-      <input className="mb-4" type="range" min="1" max="100" />
+      <input className="mb-2" type="range" min="1" max="100" />
       <Button
         label={playerOneReady ? 'Ready' : 'Confirm'}
         onClick={() => togglePlayerReady(1)}
@@ -59,7 +59,7 @@ const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
     </div>
     <div className="bg-blue-600 p-8 rounded-lg text-white flex flex-col items-center">
       <h2>Player 2 Intensity</h2>
-      <input className="mb-4" type="range" min="1" max="100" />
+      <input className="mb-2" type="range" min="1" max="100" />
       <Button
         label={playerTwoReady ? 'Ready' : 'Confirm'}
         onClick={() => togglePlayerReady(2)}
@@ -67,7 +67,7 @@ const GameSetup = ({ onPlayerReady, playerOneReady, playerTwoReady }) => {
     </div>
   </div>
 
-  <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 text-white rounded-lg mt-8 flex flex-col items-center">
+  <div className="bg-gradient-to-r from-purple-400 to-blue-500 p-8 text-white rounded-lg mt-4 flex flex-col items-center">
     <h2>Game Intensity</h2>
     <input
       className="mb-4"
