@@ -14,8 +14,8 @@ function App() {
   const [playerTwoReady, setPlayerTwoReady] = useState(false);
   const [resetGame, setResetGame] = useState('');
   const [songTopScore, setSongTopScore] = useState(0);
-  const [playerOneIntensity, setPlayerOneIntensity] = useState(0);
-  const [playerTwoIntensity, setPlayerTwoIntensity] = useState(0);
+  const [playerOneIntensity, setPlayerOneIntensity] = useState(2);
+  const [playerTwoIntensity, setPlayerTwoIntensity] = useState(2);
   const [gameIntensity, setGameIntensity] = useState(2);
 
   // Handle gameIntensity

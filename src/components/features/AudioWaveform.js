@@ -67,13 +67,13 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
     const analyserNode = analyserRef.current;
 
     if (!canvasContext || !analyserNode) {
-      console.log('Canvas context or analyser node not available');
+      // console.log('Canvas context or analyser node not available');
       return;
     }
 
     const audioElement = audioRef.current;
     if (!audioElement || audioElement.paused || audioElement.ended) {
-      console.log('No audio');
+      // console.log('No audio');
       return;
     }
 
@@ -113,16 +113,16 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
   }, []);
 
   const startAudio = () => {
-    console.log('startAudio called');
+    
     const audioContext =
       audioContextRef.current ||
       new (window.AudioContext || window.webkitAudioContext)();
     audioContextRef.current = audioContext;
-    console.log('AudioContext state:', audioContext.state);
+   
 
     const analyser = analyserRef.current || audioContext.createAnalyser();
     analyserRef.current = analyser;
-    console.log('Analyser node created:', analyser);
+ 
 
     const audioElement = audioRef.current;
     const sourceNode =
@@ -162,7 +162,7 @@ const AudioWaveform = ({ src, play, onTimeUpdate }) => {
 
   useEffect(() => {
     const audioElement = audioRef.current;
-    console.log('useEffect called');
+   
 
     const onPlay = () => {
       startAudio();

@@ -69,7 +69,7 @@ const GamePlay = ({
 
   //   Handle resetting audio at game restart
   useEffect(() => {
-    console.log('RESET GAME');
+    
     setGameSong('');
     setIsPlaying(false);
   }, [resetGame]);
@@ -84,39 +84,29 @@ const GamePlay = ({
         }
         const data = await response.json();
 
-        console.log('Vibe Array', data);
-
-        // Log the names of each song
-        data.forEach((song) => {
-          console.log('SONG URL', song.url);
-        });
-
-        data.forEach((song) => {
-          console.log('SONG topscore', song.topscore);
-        });
 
         switch (gameIntensity) {
           case 1:
             setGameSong(gameSongs.dimensionsSong);
-            console.log('Switch case 1:', gameSongs.dimensionsSong);
+          
             setSongsVibeArray(data[0].description);
             setSongTopScore(data[0].topscore);
             break;
           case 2:
             setGameSong(gameSongs.vibesSong);
-            console.log('Switch case 1:', gameSongs.vibesSong);
+            
             setSongsVibeArray(data[1].description);
             setSongTopScore(data[1].topscore);
             break;
           case 3:
             setGameSong(gameSongs.neonDreamsSong);
-            console.log('Switch case 1:', gameSongs.neonDreamsSong);
+           
             setSongsVibeArray(data[2].description);
             setSongTopScore(data[2].topscore);
             break;
           case 4:
             setGameSong(gameSongs.downUnderSong);
-            console.log('Switch case 1:', gameSongs.downUnderSong);
+            
             setSongsVibeArray(data[3].description);
             setSongTopScore(data[3].topscore);
             break;
@@ -132,7 +122,7 @@ const GamePlay = ({
     };
 
     fetchSongVibeArray();
-  }, []);
+  }, [gameIntensity,gameSongs.dimensionsSong, gameSongs.vibesSong, gameSongs.neonDreamsSong, gameSongs.downUnderSong, setSongTopScore]);
 
   const handleGameEnd = () => {
     setGameSong('');
@@ -144,14 +134,13 @@ const GamePlay = ({
   useEffect(() => {
     let gameScore = playerOneScore + playerTwoScore;
     onGameScoreChange(gameScore);
-  }, [playerOneScore, playerTwoScore]);
+  }, [playerOneScore, playerTwoScore, onGameScoreChange]);
+
   const debouncedPlayerOneInput = useDebounce(playerOneInput, 1000);
   const debouncedPlayerTwoInput = useDebounce(playerTwoInput, 1000);
 
   useEffect(() => {
-    // console.log('debouncedPlayerOneInput:', debouncedPlayerOneInput);
-    // console.log('playerOneInputs:', playerOneInputs);
-    // console.log('playerTwoInputs:', playerTwoInputs);
+    
     if (
       debouncedPlayerOneInput &&
       !playerOneInputs.includes(debouncedPlayerOneInput) &&
@@ -166,9 +155,7 @@ const GamePlay = ({
   }, [debouncedPlayerOneInput, playerOneInputs, playerTwoInputs]);
 
   useEffect(() => {
-    // console.log('debouncedPlayerTwoInput:', debouncedPlayerTwoInput);
-    // console.log('playerTwoInputs:', playerTwoInputs);
-    // console.log('playerOneInputs:', playerOneInputs);
+    
     if (
       debouncedPlayerTwoInput &&
       !playerTwoInputs.includes(debouncedPlayerTwoInput) &&
@@ -207,7 +194,7 @@ const GamePlay = ({
       setPlayerTwoScore((prevScore) => prevScore + 1);
       setLastScoredWordPlayerTwo(lastWordPlayerTwo);
     }
-  }, [playerOneInputs, playerTwoInputs]);
+  }, [playerOneInputs, playerTwoInputs, lastScoredWordPlayerOne, lastScoredWordPlayerTwo, songsVibeArray]);
 
   useEffect(() => {
     // This effect runs when `isPlaying` or `gameSong` changes.
@@ -219,17 +206,17 @@ const GamePlay = ({
         audioElement.src = '';
       }
     }
-  }, [isPlaying]);
+  }, [isPlaying, gameSong]);
 
   // Had to put this logic inside of a side effect with a timer to fix an event bubbling / async error loading the song too quickly
   useEffect(() => {
     const timer = setTimeout(() => {
       // Check if gameSong has a value and set isPlaying
       if (gameSong && gameSong.length > 0) {
-        console.log('This is the gameSong', gameSong);
+       
         setIsPlaying(true);
       } else {
-        console.log('RESET GAME - Clearing gameSong');
+ 
         setGameSong('');
         setIsPlaying(false);
       }

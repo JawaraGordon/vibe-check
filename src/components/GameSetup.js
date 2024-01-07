@@ -32,28 +32,6 @@ const GameSetup = ({
     navigate('/');
   };
 
-  // Starts countdown when both players are ready
-  // useEffect(() => {
-  //   let timeoutId;
-  //   let countdownId;
-  //   if (playerOneReady && playerTwoReady) {
-  //     let countdown = 3;
-  //     countdownId = setInterval(() => {
-  //       console.log(`Navigating in ${countdown} seconds...`);
-  //       countdown--;
-  //     }, 1000);
-  //     timeoutId = setTimeout(() => {
-  //       clearInterval(countdownId);
-  //       navigate('/play');
-  //     }, 3000);
-  //   }
-
-  //   return () => {
-  //     clearTimeout(timeoutId);
-  //     clearInterval(countdownId);
-  //   };
-  // }, [playerOneReady, playerTwoReady, navigate]);
-
   useEffect(() => {
     let timeoutId;
     if (playerOneReady && playerTwoReady) {

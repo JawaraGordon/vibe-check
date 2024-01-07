@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
-import Header from '../components/common/Header';
+// import Header from '../components/common/Header';
 import vibesYesImg from '../assets/images/vibes-yes.png';
 import vibesNoImg from '../assets/images/vibes-no.png';
 
@@ -28,12 +28,10 @@ const GameResults = ({ songTopScore, gameScore, onReset, onGameRestart }) => {
     <>
       {/* <Header /> */}
       <div className="bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center h-screen">
-        {/* <h1 className="text-white text-4xl font-bold leading-none mb-8">
-          Game Results
-        </h1> */}
+       
         <div className="flex flex-col justify-center items-center w-full px-28">
           <div className="bg-transparent rounded-lg">
-            {/* <h2>Game Results</h2> */}
+         
             <img src={resultImageSrc} alt="Game Results" />
           </div>
           <div className="flex justify-evenly items-center w-full">

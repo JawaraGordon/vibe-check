@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
-import Header from '../components/common/Header';
+// import Header from '../components/common/Header';
 import VibeLogo from '../../src/assets/images/vibe-check-logo.png';
 
 const Main = () => {
@@ -22,7 +22,7 @@ const Main = () => {
           {/* <Button label="Exit" onClick={() => {}} /> */}
         </div>
       </div>
-      <div class="area" >
+      <div classNAme="area" >
             <ul class="circles">
                     <li></li>
                     <li></li>
