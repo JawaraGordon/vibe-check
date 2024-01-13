@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e944d462.css",
+    "main.js": "/static/js/main.3cadfaa3.js",
+    "static/js/787.58abd510.chunk.js": "/static/js/787.58abd510.chunk.js",
+    "static/media/Neon Dreams.mp3": "/static/media/Neon Dreams.43b7390983ec7c4a9d67.mp3",
+    "static/media/Dimensions.mp3": "/static/media/Dimensions.d9c9df22184eaea0af92.mp3",
+    "static/media/Down Under.mp3": "/static/media/Down Under.58c1039b492c369a98a0.mp3",
+    "static/media/VIBES.mp3": "/static/media/VIBES.303e834a9befd657ecc8.mp3",
+    "static/media/silence-30-seconds.mp3": "/static/media/silence-30-seconds.437eea403cf55eb8f374.mp3",
+    "static/media/vibe-check-logo.png": "/static/media/vibe-check-logo.cd15e63980c33cfd5ca3.png",
+    "static/media/vibes-no.png": "/static/media/vibes-no.aa44b5da54979892c011.png",
+    "static/media/vibes-yes.png": "/static/media/vibes-yes.ff6cd335fefdebe06c9c.png",
+    "static/media/game-setup.png": "/static/media/game-setup.c1cfa895626d16faf9c5.png",
+    "index.html": "/index.html",
+    "main.e944d462.css.map": "/static/css/main.e944d462.css.map",
+    "main.3cadfaa3.js.map": "/static/js/main.3cadfaa3.js.map",
+    "787.58abd510.chunk.js.map": "/static/js/787.58abd510.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e944d462.css",
+    "static/js/main.3cadfaa3.js"
+  ]
+}

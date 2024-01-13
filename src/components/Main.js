@@ -4,6 +4,7 @@ import Button from '../components/common/Button';
 // import Header from '../components/common/Header';
 import Modal from './utils/HelpModal';
 import VibeLogo from '../../src/assets/images/vibe-check-logo.png';
+import Silence from '../../src/assets/audio/silence-30-seconds.mp3';
 
 const Main = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +21,26 @@ Game Results & Intensity Selection:
 
 Check your scores and see if you've matched the right vibes. Decide to start a new round or quit. Refine your game experience by adjusting the intensity for the next round based on your previous gameplay.`;
 
+  const audioElement = document.createElement('audio');
+
+  audioElement.id = 'initGameAudioPlayer';
+
+  // Mocking the audio source
+  audioElement.src = { Silence };
+  document.body.appendChild(audioElement);
+  // console.log('initGameAudioPlayer', audioElement);
+
+  if (audioElement) {
+    audioElement.load();
+  }
+
   const handleStartClick = () => {
+    const audioToRemove = document.getElementById('initGameAudioPlayer');
+    if (audioToRemove) {
+      audioToRemove.pause();
+      audioToRemove.remove();
+    }
+
     navigate('/setup');
   };
 
@@ -42,8 +62,8 @@ Check your scores and see if you've matched the right vibes. Decide to start a n
       </div>
       {showModal && <Modal text={gameInstructions} onClose={toggleModal} />}
 
-      <div classNAme="area">
-        <ul class="circles">
+      <div className="area">
+        <ul className="circles">
           <li></li>
           <li></li>
           <li></li>
